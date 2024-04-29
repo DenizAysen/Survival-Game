@@ -16,11 +16,13 @@ public class AgentMovement : MonoBehaviour
     public float MovementSpeed;
     public float Gravity;
     public float RotationSpeed;
-
+    public float JumpSpeed;
     public int angleRotationThreshold;
     #endregion
 
     private int _inputVerticalDirection = 0;
+    private bool _isJumping = false;
+    private bool _finishedJumping = true;
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -58,6 +60,13 @@ public class AgentMovement : MonoBehaviour
             desiredRotationAngle *= -1;
         }
     }
+    public void HandleJump()
+    {
+        if (characterController.isGrounded)
+        {
+            _isJumping = true;
+        }
+    }
     private void Update()
     {
         if (characterController.isGrounded)
@@ -71,6 +80,14 @@ public class AgentMovement : MonoBehaviour
                 moveDirection *= animationSpeedMultiplier;
             }
         }
+        if (_isJumping)
+        {
+            _isJumping = false;
+            _finishedJumping = false;
+            moveDirection.y = JumpSpeed;
+            agentAnimations.SetMovementFloat(0);
+            agentAnimations.TriggerJumpAnimation();
+        }
         moveDirection.y -= Gravity;
         characterController.Move(moveDirection * Time.deltaTime);
     }
@@ -82,4 +99,12 @@ public class AgentMovement : MonoBehaviour
             transform.Rotate(Vector3.up * desiredRotationAngle * RotationSpeed * Time.deltaTime);
         }
     }
+    public void StopMovementImmediatelly()
+    {
+        moveDirection = Vector3.zero;
+    }
+    public bool HasFinishedJumping() => _finishedJumping;
+    public void SetFinishedJumping() => _finishedJumping = true;
+
+    public bool IsGrounded() => characterController.isGrounded;
 }

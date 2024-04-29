@@ -9,6 +9,20 @@ public class HumanoidAnimations : MonoBehaviour
     {
         _anim = GetComponent<Animator>();
     }
+    #region Trigger Animations
+    public void TriggerLandingAnimation()
+    {
+        _anim.SetTrigger("Land");
+    }
+    public void TriggerJumpAnimation()
+    {
+        _anim.SetTrigger("Jump");
+    }
+    public void TriggerFallAnimation()
+    {
+        _anim.SetTrigger("Fall");
+    } 
+    #endregion
     public void SetMovementFloat(float value)
     {
         _anim.SetFloat("Move", value);
