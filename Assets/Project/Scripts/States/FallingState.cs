@@ -8,6 +8,7 @@ public class FallingState : JumpState
     {
         base.EnterState(controller);
         controller.AgentAnimations.TriggerFallAnimation();
+        controller.Movement.SetFinishedJumpingFalse();
     }
     public override void Update()
     {

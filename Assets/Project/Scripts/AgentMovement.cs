@@ -104,7 +104,10 @@ public class AgentMovement : MonoBehaviour
         moveDirection = Vector3.zero;
     }
     public bool HasFinishedJumping() => _finishedJumping;
-    public void SetFinishedJumping() => _finishedJumping = true;
+    #region Animation Events
+    public void SetFinishedJumpingTrue() => _finishedJumping = true;
+    public void SetFinishedJumpingFalse() => _finishedJumping = false; 
+    #endregion
 
     public bool IsGrounded() => characterController.isGrounded;
 }
