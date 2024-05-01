@@ -11,6 +11,7 @@ public class JumpState : BaseState
         base.EnterState(controller);
         _landingTrigger = false;
         _landingCheckTimer = .2f;
+        controller.AgentAnimations.ResetTriggerLandingAnimation();
         controller.Movement.HandleJump();
     }
     public override void Update()

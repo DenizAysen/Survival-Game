@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class MovementState : BaseState
 {
-    float fallingDelay = 0;
+    float _fallingDelay = 0;
+    float _defaultFallingDelay = .2f;
     public override void EnterState(AgentController controller)
     {
         base.EnterState(controller);
-        fallingDelay = .2f;
+        _fallingDelay = _defaultFallingDelay;
     }
     public override void HandleMovement(Vector2 input)
     {
@@ -31,12 +32,16 @@ public class MovementState : BaseState
         HandleCameraDirection(controller.Input.MovementDirectionVector);
         if (controller.Movement.IsGrounded() == false)
         {
-            if(fallingDelay > 0)
+            if(_fallingDelay > 0)
             {
-                fallingDelay -= Time.deltaTime;
+                _fallingDelay -= Time.deltaTime;
                 return;
             }
             controller.TransitionState(controller.fallingState);
+        }
+        else
+        {
+            _fallingDelay = .2f;
         }
     }
 }
