@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2158571286647590517}
   - component: {fileID: 2158571286647590519}
   - component: {fileID: 3577630929215604423}
+  - component: {fileID: 3833335853898855112}
   m_Layer: 5
   m_Name: HotBarItemPanel
   m_TagString: Untagged
@@ -120,6 +121,26 @@ MonoBehaviour:
   m_EffectColor: {r: 0.34708786, g: 1, b: 0, a: 0.5}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &3833335853898855112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2158571286647590507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7651e1414e9e678438fb24b6b32e1408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemImage: {fileID: 2158571286769284943}
+  nameText: {fileID: 0}
+  countText: {fileID: 2158571287042075946}
+  backgroundSprite: {fileID: 21300000, guid: 8d2b0b3047c5bf0488406e2ec3716d2d, type: 3}
+  itemName: 
+  itemCount: 
+  isEmpty: 1
+  isHotbarItem: 1
 --- !u!1 &2158571286769284941
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +208,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8d2b0b3047c5bf0488406e2ec3716d2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -14,8 +14,7 @@ public class ItemPanelHelper : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText, countText;
     private Outline itemOutline;
     [SerializeField] private Sprite backgroundSprite;
-
-    [Header("Item info")]
+    [Header("Item Info")]
     [SerializeField] private string itemName, itemCount;
     [SerializeField] private bool isEmpty = true;
     [SerializeField] private bool isHotbarItem = false;
@@ -27,6 +26,23 @@ public class ItemPanelHelper : MonoBehaviour
         {
             ClearItem();
         }
+    }
+    public void SetInventoryUIElement(string name, int count, Sprite image)
+    {
+        itemName = name;
+        itemCount = count.ToString();
+        if (!isHotbarItem)
+            nameText.text = itemName;
+        countText.text = itemCount;
+        isEmpty = false;
+        SetImageSprite(image);
+    }
+
+    private void SetImageSprite(Sprite image) => itemImage.sprite = image;
+    public void SwapWithData(string name, int count, Sprite image, bool isEmpty)
+    {
+        SetInventoryUIElement(name, count, image);
+        this.isEmpty = isEmpty;
     }
 
     private void ClearItem()
